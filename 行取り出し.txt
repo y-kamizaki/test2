@@ -1,0 +1,27 @@
+                    // ファイルからヘッダ行空読み
+                    var line = sr.ReadLine();
+                    // ストリームの末尾まで繰り返す
+                    while (!sr.EndOfStream)
+                    {
+                        // ファイルから一行読み込む
+                        line = sr.ReadLine();
+                        // 読み込んだ一行をカンマ毎に分けて各入力欄に格納する
+                        var values = line.Split(',');
+                        
+                       grid = int.Parse(values[0]);
+                        dCnctInfo[mIndex].VIPA = values[1];
+                        dCnctInfo[mIndex].MCGA = values[2];
+                        dCnctInfo[mIndex].PORT = int.Parse(values[3]);
+
+                        if (((dCnctInfo[mIndex].Id) >= 201 && (dCnctInfo[mIndex].Id <= 300)) && (values[0] != ""))
+                        {
+                            dCnctInfo[mIndex].CH = int.Parse(values[4]);
+                        }
+                        else
+                        {
+                            dCnctInfo[mIndex].CH = 0;
+                        }
+                        mIndex++;
+
+                        dListMax = mIndex;
+                    }
